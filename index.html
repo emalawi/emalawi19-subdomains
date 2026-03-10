@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emalawi19 · free dev subdomains</title>
+    <style>
+        /* reset & base — dark dev style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0c0f;
+            background: radial-gradient(circle at 30% 20%, #1a240f, #0b0d10 80%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #e3e9f1;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* smooth container – centered, clean max-width */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(12, 18, 22, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid #2b3a2b;
+            border-radius: 2.5rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px -10px rgba(0, 20, 0, 0.7), 0 0 0 1px rgba(70, 200, 70, 0.1) inset;
+        }
+
+        /* header — flex row, clean spacing */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(130deg, #c0ffc0, #9fef9f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 8px #1f9f1f80;
+        }
+        .logo span {
+            color: #b3f0b3;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            text-shadow: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.2rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #c0d4c0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.4rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: #b3ffb3;
+            border-bottom-color: #3acf3a;
+        }
+
+        /* hero */
+        .hero {
+            text-align: center;
+            margin: 2rem 0 3.5rem 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            background: linear-gradient(170deg, #f0fff0, #caffca);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 0 15px #2e7d32;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #a8c6a8;
+            max-width: 650px;
+            margin: 1rem auto 2.2rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1b3322;
+            border: 1px solid #34c759;
+            color: #d0ffd0;
+            font-weight: 600;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px -6px #2e7d3240;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn:hover {
+            background: #1f4727;
+            border-color: #70e070;
+            color: #ffffff;
+            box-shadow: 0 8px 25px -2px #49c749;
+            transform: scale(1.02);
+        }
+
+        /* generator card */
+        .generator {
+            background: #0f1a14cc;
+            border: 1px solid #2f6b2f;
+            border-radius: 2rem;
+            padding: 2.2rem 2rem;
+            margin: 3rem 0 3rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 28px -15px black;
+        }
+
+        .generator h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #c0f0c0;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-field {
+            background: #132016;
+            border: 1px solid #2f7930;
+            border-radius: 40px;
+            padding: 1.2rem 2rem;
+            font-size: 1.4rem;
+            color: #e0f0da;
+            outline: none;
+            transition: 0.2s;
+            font-family: 'Fira Code', monospace, 'Inter';
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        .input-field:focus {
+            border-color: #6ae06a;
+            box-shadow: 0 0 0 3px #6ae06a30, 0 0 15px #49b449;
+            background: #172a1c;
+        }
+
+        .preview-block {
+            background: #0e1c10;
+            border-radius: 40px;
+            padding: 1.1rem 2rem;
+            border: 1px solid #358035;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+        }
+
+        .preview-label {
+            font-weight: 300;
+            color: #b0d6b0;
+            font-size: 1.2rem;
+        }
+
+        .live-preview {
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 1.7rem;
+            font-weight: 500;
+            word-break: break-word;
+            color: #c7ffc7;
+            text-shadow: 0 0 4px #11dd11;
+            background: #1b2c1b;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #66cc66;
+        }
+
+        .generate-btn {
+            background: transparent;
+            border: 1.5px solid #4bb84b;
+            color: #bef5be;
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: fit-content;
+            margin-top: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .generate-btn:hover {
+            background: #2f6d2f;
+            color: white;
+            border-color: #a2f0a2;
+            box-shadow: 0 0 15px #51c151;
+        }
+
+        /* features cards */
+        .features-title {
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem 0;
+            font-weight: 500;
+            border-left: 5px solid #43b843;
+            padding-left: 1.2rem;
+            color: #e0f0da;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem 0;
+        }
+
+        .card {
+            background: #111f15;
+            border: 1px solid #2c6b2c;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            backdrop-filter: blur(8px);
+            transition: transform 0.15s, border-color 0.2s;
+            box-shadow: 0 10px 18px -12px black;
+        }
+
+        .card:hover {
+            border-color: #72d672;
+            transform: translateY(-6px);
+            background: #182b1e;
+        }
+
+        .card h3 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #b0f5b0;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: #b0ceb0;
+            font-size: 1.15rem;
+        }
+
+        /* footer */
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #8ba08b;
+            border-top: 1px dashed #3f6b3f;
+            padding-top: 2rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        .footer strong {
+            color: #bef5be;
+            font-weight: 600;
+        }
+
+        /* responsive fine-tune */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem 1.2rem;
+                border-radius: 2rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: start;
+            }
+            .live-preview {
+                font-size: 1.3rem;
+            }
+            .input-field {
+                font-size: 1.2rem;
+                padding: 1rem 1.5rem;
+            }
+            .preview-block {
+                padding: 0.9rem 1.2rem;
+            }
+            .btn, .generate-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- header -->
+        <header class="header">
+            <div class="logo">Ema<span>lawi19</span></div>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#">Features</a>
+                <a href="#">Create Domain</a>
+            </nav>
+        </header>
+
+        <!-- hero -->
+        <section class="hero">
+            <h1>Emalawi19 Free Subdomains</h1>
+            <p>Create free developer domains for your projects instantly.</p>
+            <a href="#" class="btn">Create Your Domain →</a>
+        </section>
+
+        <!-- domain generator live preview -->
+        <section class="generator">
+            <h2>⚡ instant domain generator</h2>
+            <div class="input-group">
+                <input type="text" id="domainInput" class="input-field" placeholder="e.g. roosevelt" autofocus>
+                <div class="preview-block">
+                    <span class="preview-label">live preview:</span>
+                    <span class="live-preview" id="livePreview">username.emalawi19.dev</span>
+                </div>
+                <button class="generate-btn" id="generateBtn">⟳ Generate Domain</button>
+            </div>
+            <p style="color:#698f69; margin-top:1.2rem;">✨ type anything — preview updates in real time</p>
+        </section>
+
+        <!-- features cards (3) -->
+        <h2 class="features-title">features developers love</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>∞ Free</h3>
+                <p>Subdomains are 100% free — no hidden costs, forever.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Easy Setup</h3>
+                <p>Point your code in seconds. Zero config wizardry.</p>
+            </div>
+            <div class="card">
+                <h3>🛠️ Dev Friendly</h3>
+                <p>Wildcard SSL, APIs, and modern tooling included.</p>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer class="footer">
+            <span>Powered by <strong>Emalawi19</strong></span>
+        </footer>
+    </div>
+
+    <!-- javascript live preview -->
+    <script>
+        (function() {
+            const inputEl = document.getElementById('domainInput');
+            const previewEl = document.getElementById('livePreview');
+            const generateBtn = document.getElementById('generateBtn');
+
+            // base domain
+            const BASE_DOMAIN = 'emalawi19.dev';
+
+            // default preview text (also matches placeholder visual)
+            const updatePreview = (value) => {
+                let subdomain = value.trim();
+                if (subdomain === '') {
+                    // if empty, show "username" as placeholder example
+                    previewEl.textContent = `username.${BASE_DOMAIN}`;
+                } else {
+                    // remove any characters that might break domain (spaces, special chars)
+                    // but we keep it simple: just replace spaces with nothing, lowercase friendly
+                    let cleaned = subdomain.replace(/\s+/g, '').toLowerCase();
+                    // if after cleaning it's empty, fallback to 'username'
+                    if (cleaned === '') cleaned = 'username';
+                    previewEl.textContent = `${cleaned}.${BASE_DOMAIN}`;
+                }
+            };
+
+            // event: typing -> live update
+            inputEl.addEventListener('input', function(e) {
+                updatePreview(e.target.value);
+            });
+
+            // extra: generate button just gives a little random example (optional fun)
+            generateBtn.addEventListener('click', function() {
+                const randomNames = ['devpanda', 'codefox', 'roosevelt', 'quantum', 'bluesky', 'nineroot', 'astronaut', 'webforger', 'ember', 'voidwalker'];
+                const randomPick = randomNames[Math.floor(Math.random() * randomNames.length)];
+                inputEl.value = randomPick;
+                updatePreview(randomPick);
+            });
+
+            // initial set (on page load, input is empty → shows username.emalawi19.dev)
+            updatePreview('');   // consistent default
+
+            // also if user clears field, we keep placeholder look
+        })();
+    </script>
+
+    <!-- tiny extra style for consistency (inter font via fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- using only system fallback but include Inter for better readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</body>
+</html>
